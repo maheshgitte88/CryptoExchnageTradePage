@@ -10,11 +10,82 @@
       content="Web site created using create-react-app"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+    <link
+      rel="apple-touch-icon"
+      href="https://demo.mash3div.com/assets/images/logoIcon/logo.png"
+    />
+    <meta
+      itemprop="image"
+      content="https://demo.mash3div.com/assets/images/seo/61daf61a56f2f1641739802.png"
+    />
+    <!-- Facebook Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Bicrypto" />
+    <meta
+      property="og:image"
+      content="https://demo.mash3div.com/assets/images/seo/61daf61a56f2f1641739802.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="315" />
+    <meta
+      property="og:url"
+      content="https://demo.mash3div.com/trade/BTC/USDT"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script>
+      window.darkMode = "1";
+    </script>
+    <script>
+      function setTheme() {
+        if (!("color-theme" in localStorage)) {
+          // Set theme from database and save it to local storage
+          localStorage.setItem(
+            "color-theme",
+            window.darkMode === "1" ? "dark" : "light"
+          );
+        }
+
+        const theme = localStorage.getItem("color-theme");
+
+        if (theme === "dark") {
+          document.documentElement.classList.add("dark");
+          window.theme = "dark";
+        } else {
+          document.documentElement.classList.remove("dark");
+          window.theme = "light";
+        }
+      }
+
+      setTheme();
+    </script>
+    <link
+      rel="preload"
+      as="style"
+      href="https://demo.mash3div.com/build/assets/app-191732dc.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://demo.mash3div.com/build/assets/app-191732dc.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
