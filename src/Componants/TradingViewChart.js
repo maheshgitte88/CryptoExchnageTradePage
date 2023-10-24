@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 let tvScriptLoadingPromise;
 
 export default function TradingViewChart({ selectedSymbol }) {
+    const symbol = selectedSymbol.replace('/', '');
     const onLoadScriptRef = useRef();
 
     useEffect(
@@ -15,7 +16,6 @@ export default function TradingViewChart({ selectedSymbol }) {
                     script.src = 'https://s3.tradingview.com/tv.js';
                     script.type = 'text/javascript';
                     script.onload = resolve;
-
                     document.head.appendChild(script);
                 });
             }
@@ -24,11 +24,11 @@ export default function TradingViewChart({ selectedSymbol }) {
             return () => onLoadScriptRef.current = null;
 
             function createWidget() {
-                if (document.getElementById('tradingview_9154e') && 'TradingView' in window) {
+                if (document.getElementById('tradingview_8ae39') && 'TradingView' in window) {
                     new window.TradingView.widget({
                         width: '100%',
                         height: '410',
-                        symbol: `${selectedSymbol}`,
+                        symbol: `${symbol}`,
                         interval: "D",
                         timezone: "Etc/UTC",
                         theme: "light",
@@ -36,22 +36,19 @@ export default function TradingViewChart({ selectedSymbol }) {
                         locale: "in",
                         enable_publishing: true,
                         withdateranges: true,
-                        hide_side_toolbar: false,
+                        hide_side_toolbar: true,
                         allow_symbol_change: true,
-                        container_id: "tradingview_9154e"
+                        container_id: "tradingview_8ae39"
                     });
                 }
             }
         },
         [selectedSymbol]
     );
-    console.log(selectedSymbol, 54)
+    console.log(symbol, 54)
     return (
         <div className='tradingview-widget-container'>
-            <div id='tradingview_9154e' />
-            <div className="tradingview-widget-copyright">
-                <a href="https://in.tradingview.com/" rel="noopener nofollow" target="_blank"><span className="blue-text">Track all markets on TradingView</span></a>
-            </div>
+            <div id='tradingview_8ae39' />
         </div>
     );
 }

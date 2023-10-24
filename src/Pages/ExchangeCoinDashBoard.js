@@ -2,55 +2,44 @@ import React, { useEffect, useRef, useState } from 'react'
 import "./ExchangeDashboard.css";
 import DepthChart from '../Componants/DepthChart';
 import BuySell from '../Componants/BuySell';
-import TradingViewChart from './TradingViewChart';
+import TradingViewChart from '../Componants/TradingViewChart';
 const initialData = [
-    { pair: "BTC/USD", price: 45000, change: 2.5 },
-    { pair: "ETH/USD", price: 2.000, change: -1.8 },
-    { pair: "TRX/USD", price: 0.600, change: 1.8 },
-    { pair: "DOT/USD", price: 0.500, change: -1.1 },
-    { pair: "XRP/USD", price: 7.000, change: -3.8 },
-    { pair: "BNB/USD", price: 9.100, change: 3.8 },
-    { pair: "DOT/USD", price: 0.500, change: -1.1 },
-    { pair: "XRP/USD", price: 7.000, change: -3.8 },
-    { pair: "BNB/USD", price: 9.100, change: 3.8 },
-    { pair: "BNB/USD", price: 9.100, change: 3.8 },
-    { pair: "DOT/USD", price: 0.500, change: -1.1 },
-    { pair: "XRP/USD", price: 7.000, change: -3.8 },
-    { pair: "BNB/USD", price: 9.100, change: 3.8 },
-    { pair: "BNB/USD", price: 9.100, change: 3.8 },
-    { pair: "DOT/USD", price: 0.500, change: -1.1 },
-    { pair: "XRP/USD", price: 7.000, change: -3.8 },
-    { pair: "BNB/USD", price: 9.100, change: 3.8 },
-    { pair: "BTC/USD", price: 45000, change: 2.5 },
-    { pair: "ETH/USD", price: 2.000, change: -1.8 },
-    { pair: "TRX/USD", price: 0.600, change: 1.8 },
-    { pair: "DOT/USD", price: 0.500, change: -1.1 },
-    { pair: "XRP/USD", price: 7.000, change: -3.8 },
-    { pair: "BNB/USD", price: 9.100, change: 3.8 },
-    { pair: "DOT/USD", price: 0.500, change: -1.1 },
-    { pair: "XRP/USD", price: 7.000, change: -3.8 },
-    { pair: "BNB/USD", price: 9.100, change: 3.8 },
-    { pair: "BNB/USD", price: 9.100, change: 3.8 },
-    { pair: "DOT/USD", price: 0.500, change: -1.1 },
-    { pair: "XRP/USD", price: 7.000, change: -3.8 },
-    { pair: "BNB/USD", price: 9.100, change: 3.8 },
-    { pair: "BNB/USD", price: 9.100, change: 3.8 },
-    { pair: "XRP/USD", price: 7.000, change: -3.8 },
+    { pair: "BTC/USDT", price: 34500, change: 2.5 },
+    { pair: "ETH/USDT", price: 1840, change: -1.8 },
+    { pair: "TRX/USDT", price: 0.090, change: 1.8 },
+    { pair: "DOT/USDT", price: 4.25, change: -1.1 },
+    { pair: "XRP/USDT", price: 0.55, change: -3.8 },
+    { pair: "BNB/USDT", price: 230.1, change: 3.8 },
+    { pair: "AVA/USDT", price: 0.488, change: -2.3 },
+    { pair: "ADA/USDT", price: 0.284, change: 0.5 },
+    { pair: "LTC/USDT", price: 69.2, change: -0.7 },
+    { pair: "DOGE/USDT", price: 0.0674, change: 4.2 },
+    { pair: "SOL/USDT", price: 31.78, change: 5.6 },
+    { pair: "UNI/USDT", price: 4.731, change: -2.0 },
+    { pair: "LINK/USDT", price: 10.46, change: 1.2 },
+    { pair: "MATIC/USDT", price: 0.651, change: -2.8 },
+    { pair: "AAVE/USDT", price: 85.32, change: 2.7 },
+    { pair: "XLM/USDT", price: 0.114, change: 0.9 },
+    { pair: "EOS/USDT", price: 0.596, change: -1.3 },
+    { pair: "BCH/USDT", price: 261.2, change: -0.5 },
+    { pair: "XTZ/USDT", price: 0.713, change: 2.3 },
+    { pair: "ALGO/USDT", price: 0.1010, change: -2.0 },
+    { pair: "ATOM/USDT", price: 7.164, change: 3.2 },
 
 ];
 
 const initialDatatwo = [
-    { Price: 29568.99, Amount: 45000, Time: '14:48:45' },
+    { Price: 29568.99, Amount: 4.50, Time: '14:48:45' },
     { Price: 29568.00, Amount: 2.000, Time: '14:48:45' },
     { Price: 295670.7, Amount: 0.600, Time: '14:48:45' },
-    { Price: 29567.05, Amount: 0.500, Time: '14:48:45' },
-    { Price: 29567.00, Amount: 7.000, Time: '14:48:45' },
-    { Price: 29567.00, Amount: 9.100, Time: '14:48:45' },
     { Price: 29567.00, Amount: 0.500, Time: '14:48:45' },
-    { Price: 29567.00, Amount: 7.000, Time: '14:48:45' },
-    { Price: 29567.00, Amount: 9.100, Time: '14:47:45' },
+    { Price: 29567.05, Amount: 7.000, Time: '14:48:45' },
+    { Price: 29567.15, Amount: 9.100, Time: '14:48:45' },
+    { Price: 29567.10, Amount: 0.500, Time: '14:48:45' },
+    { Price: 29567.20, Amount: 7.000, Time: '14:48:45' },
+    { Price: 29567.30, Amount: 9.100, Time: '14:47:45' },
     { Price: 29567.80, Amount: 9.100, Time: '14:48:45' },
-    { Price: 29566.00, Amount: 0.500, Time: '14:46:45' },
+    { Price: 29566.90, Amount: 0.500, Time: '14:46:45' },
     { Price: 29565.70, Amount: 7.000, Time: '14:48:45' },
     { Price: 29565.00, Amount: 9.100, Time: '14:48:45' },
     { Price: 29564.00, Amount: 9.100, Time: '14:45:45' },
@@ -66,7 +55,34 @@ const ExchangeCoinDashBoard = () => {
     const sliderRef = useRef(null);
     const [activeSectionType, setActiveSectionType] = useState('Ask/Bid');
     const [selectedSymbol, setSelectedSymbol] = useState('BTC/USDT');
+    const [selectedPriceG, setSalectedPrice] = useState('')
     const [favorites, setFavorites] = useState([]);
+    const [selectedPrice, setSelectedPrice] = useState();
+
+    const updatePricesForSelectedSymbol = (symbol) => {
+        const selectedData = initialData.find((item) => item.pair === symbol);
+        if (selectedData) {
+            const updatedDatatwo = initialDatatwo.map((item) => ({
+                Price: parseFloat((selectedData.price * (1 + (Math.random() * 0.02 - 0.01))).toFixed(4)),
+                Amount: parseFloat((Math.random() * 10).toFixed(2)),
+                Time: new Date().toLocaleTimeString(),
+            }));
+            setDepth(updatedDatatwo);
+            setSelectedPrice(selectedData.price);
+        }
+    };
+
+    useEffect(() => {
+        updatePricesForSelectedSymbol(selectedSymbol);
+
+        const interval = setInterval(() => {
+            updatePricesForSelectedSymbol(selectedSymbol);
+        }, 3500);
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, [selectedSymbol]);
 
     useEffect(() => {
         const storedFavorites = localStorage.getItem('favorites');
@@ -84,8 +100,10 @@ const ExchangeCoinDashBoard = () => {
     };
 
 
-    const handleRowClick = (symbol) => {
+    const handleRowClick = (symbol, price) => {
         setSelectedSymbol(symbol);
+        setSalectedPrice(price);
+
     };
 
     const [activeSection, setActiveSection] = useState('trades');
@@ -209,11 +227,11 @@ const ExchangeCoinDashBoard = () => {
                             {depth.map((item, index) => (
                                 <tr key={index}>
                                     <td>{item.Price}</td>
-                                    <td className={item.Amount >= 0 ? "positive" : "negative"}>
+                                    <td>
                                         {item.Amount}
                                     </td>
                                     <td className={item.change >= 0 ? "positive" : "negative"}>
-                                        {item.Time}
+                                        {parseFloat(item.Price * item.Amount).toFixed(4)}
                                     </td>
                                 </tr>
                             ))}
@@ -224,7 +242,7 @@ const ExchangeCoinDashBoard = () => {
         } else if (activeSection === 'marketDepth') {
             return (
                 <div className="MarketDepth-container">
-                    <DepthChart />
+                    <DepthChart selectedSymbol={selectedSymbol} />
                 </div>
             );
         }
@@ -246,11 +264,11 @@ const ExchangeCoinDashBoard = () => {
                             {depth.map((item, index) => (
                                 <tr key={index}>
                                     <td>{item.Price}</td>
-                                    <td className={item.Amount >= 0 ? "positive" : "negative"}>
+                                    <td>
                                         {item.Amount}
                                     </td>
                                     <td className={item.change >= 0 ? "negative" : "positive"}>
-                                        {item.Time}
+                                        {parseFloat(item.Price * item.Amount).toFixed(4)}
                                     </td>
                                 </tr>
                             ))}
@@ -274,11 +292,11 @@ const ExchangeCoinDashBoard = () => {
                                 {depth.map((item, index) => (
                                     <tr key={index}>
                                         <td>{item.Price}</td>
-                                        <td className={item.Amount >= 0 ? "positive" : "negative"}>
+                                        <td>
                                             {item.Amount}
                                         </td>
                                         <td className={item.change >= 0 ? "positive" : "negative"}>
-                                            {item.Time}
+                                            {parseFloat(item.Price * item.Amount).toFixed(4)}
                                         </td>
                                     </tr>
                                 ))}
@@ -289,65 +307,69 @@ const ExchangeCoinDashBoard = () => {
         } else if (activeSectionType === 'Ask/Bid') {
             return (
                 <>
-                    <div className="askbid-container">
-
-                        <table className="element-table">
-                            <thead>
-                                <tr>
-                                    <th onClick={() => handleSort("pair")}>Price(USDT)</th>
-                                    <th onClick={() => handleSort("price")}>Amount(BTC)</th>
-                                    <th onClick={() => handleSort("change")}>Total(USDT)</th>
-                                </tr>
-                            </thead>
-                            <tbody className='Trade-container'>
-                                {depth.map((item, index) => (
-                                    <tr key={index}>
-                                        <td>{item.Price}</td>
-                                        <td className={item.Amount >= 0 ? "positive" : "negative"}>
-                                            {item.Amount}
-                                        </td>
-                                        <td className={item.change >= 0 ? "positive" : "negative"}>
-                                            {item.Time}
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-
-                        <div className='bg-primary-subtle p-2'>
-
-
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <div className="askbid-container">
+                                    <table className="element-table">
+                                        <thead>
+                                            <tr>
+                                                <th onClick={() => handleSort("pair")}>Price(USDT)</th>
+                                                <th onClick={() => handleSort("price")}>Amount(BTC)</th>
+                                                <th onClick={() => handleSort("change")}>Total(USDT)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="Trade-container">
+                                            {depth.map((item, index) => (
+                                                <tr key={index}>
+                                                    <td>{item.Price}</td>
+                                                    <td>{item.Amount}</td>
+                                                    <td className={item.change >= 0 ? "negative" : "positive"}>
+                                                        {parseFloat(item.Price * item.Amount).toFixed(4)}
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                        <div className="askbid-container">
-                            <table className="element-table">
-                                <thead>
-                                    <tr>
-                                        <th onClick={() => handleSort("pair")}>Price(USDT)</th>
-                                        <th onClick={() => handleSort("price")}>Amount(BTC)</th>
-                                        <th onClick={() => handleSort("change")}>Total(USDT)</th>
-                                    </tr>
-                                </thead>
-                                <tbody className='Trade-container'>
-                                    {depth.map((item, index) => (
-                                        <tr key={index}>
-                                            <td>{item.Price}</td>
-                                            <td className={item.Amount >= 0 ? "positive" : "negative"}>
-                                                {item.Amount}
-                                            </td>
-                                            <td className={item.change >= 0 ? "negative" : "positive"}>
-                                                {item.Time}
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                        <div className="row">
+                            <div className="col-md-12">
+                                <div className="askbid-container">
+                                    <table className="element-table">
+                                        <thead>
+                                            <tr>
+                                                <th onClick={() => handleSort("pair")}>Price(USDT)</th>
+                                                <th onClick={() => handleSort("price")}>Amount(BTC)</th>
+                                                <th onClick={() => handleSort("change")}>Total(USDT)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="Trade-container">
+                                            {depth.map((item, index) => (
+                                                <tr key={index}>
+                                                    <td>{item.Price}</td>
+                                                    <td>{item.Amount}</td>
+                                                    <td className={item.change >= 0 ? "positive" : "negative"}>
+                                                        {parseFloat(item.Price * item.Amount).toFixed(4)}
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                    </div></>
+                        <div className='row pt-3'>
+                            <div className="col-md-12">
+                                <img src="https://res.cloudinary.com/daricnizg/image/upload/v1698150815/Mahesh_Gitte_wq6fm5.png" alt="Your Image" className="img-fluid" />
+                            </div>
+                        </div>
+                    </div>
+                </>
             );
         }
     };
-
-    console.log(selectedSymbol, 332)
 
     return (
         <>
@@ -361,8 +383,8 @@ const ExchangeCoinDashBoard = () => {
                     </div>
                     <div className="col-6 col-md-1 border border-black p-1">
                         <div className="section">
-                            <div className="section-title">0.6188</div>
-                            <div className="section-subtitle">≈ $ 0.62</div>
+                            <div className="section-title">Price</div>
+                            <div className="section-subtitle">≈ $ {selectedPriceG}</div>
                         </div>
                     </div>
                     <div className="col-6 col-md-2 border border-black p-1">
@@ -400,16 +422,15 @@ const ExchangeCoinDashBoard = () => {
 
                 <div className="row rounded">
                     <div className="col-6 col-md-3 bg-light border rounded mt-1 mb-1">
-                        <div className="p-2 m-2">
-                            {/* <input className="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search" /> */}
-                            <input type="search" placeholder="Search" className=" order-input " />
+                        <div className="m-1">
+                            <input className="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search" />
                         </div>
 
                         <div className="element-slider">
                             <button className="slider-button" onClick={handlePrev}>
                                 P
                             </button>
-                            <div className="slider-container" ref={sliderRef}>
+                            <div className="slider-container border" ref={sliderRef}>
                                 <div className="slider-element">Favorite</div>
                                 <div className="slider-element">BTC</div>
                                 <div className="slider-element">ETH</div>
@@ -439,7 +460,7 @@ const ExchangeCoinDashBoard = () => {
                                 </thead>
                                 <tbody className='table-container'>
                                     {data.map((item, index) => (
-                                        <tr key={index} onClick={() => handleRowClick(item.pair)}>
+                                        <tr role="button" tabindex="0" key={index} onClick={() => handleRowClick(item.pair, item.price)}>
                                             <td >  <span
                                                 className={`favorite-icon ${favorites.includes(item.pair) ? 'favorite' : ''}`}
                                                 onClick={(event) => {
@@ -449,7 +470,7 @@ const ExchangeCoinDashBoard = () => {
                                             >
                                                 &#9733;
                                             </span>{item.pair}</td>
-                                            <td className={item.price >= 0 ? 'positive' : 'negative'}>{item.price}</td>
+                                            <td>{item.price}</td>
                                             <td className={item.change >= 0 ? 'positive' : 'negative'}>{item.change} %</td>
                                         </tr>
                                     ))}
@@ -457,19 +478,19 @@ const ExchangeCoinDashBoard = () => {
                             </table>
                         </div>
 
-                        <div className="d-flex bg-primary-subtle rounded">
+                        <div className="d-flex bg-primary-subtle rounded justify-content-around">
                             <div
-                                className={`pe-5 p-2 ${activeSection === 'trades' ? 'active' : ''}`}
+                                className={`${activeSection === 'trades' ? 'active' : ''}`}
                                 onClick={() => handleSectionToggle('trades')}
                             >
                                 <a style={{ fontSize: "12px", fontWeight: "bold" }} data-bs-toggle="button"> Trades </a>
 
                             </div>
                             <div
-                                className={`ps-5 p-2 ${activeSection === 'marketDepth' ? 'active' : ''}`}
+                                className={`${activeSection === 'marketDepth' ? 'active' : ''}`}
                                 onClick={() => handleSectionToggle('marketDepth')}
                             >
-                                <a style={{ fontSize: "12px", fontWeight: "bold" }} data-bs-toggle="button"> M-Depth</a>
+                                <a style={{ fontSize: "12px", fontWeight: "bold" }} data-bs-toggle="button"> Depth</a>
                             </div>
                         </div>
 
@@ -479,11 +500,11 @@ const ExchangeCoinDashBoard = () => {
 
                     <div className="col-6 col-md-6 border rounded mt-1 mb-1">
                         <TradingViewChart selectedSymbol={selectedSymbol} />
-                        <BuySell />
+                        <BuySell selectedSymbol={selectedSymbol} selectedPrice={selectedPriceG} />
                     </div>
 
                     <div className="col-6 col-md-3 bg-light border rounded mt-1 mb-1">
-                        <div className='d-flex bg-primary-subtle p-2 rounded'>
+                        <div className='d-flex bg-primary-subtle rounded justify-content-around'>
                             <div className='ps-2 pe-2'>
                                 <a
                                     style={{ fontSize: "12px", fontWeight: "bold" }}
@@ -509,6 +530,7 @@ const ExchangeCoinDashBoard = () => {
                                 </a>
                             </div>
                         </div>
+
                         {renderAskSectionSection()}
                     </div>
 

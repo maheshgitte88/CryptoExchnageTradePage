@@ -1,5 +1,3 @@
-/* ElementSlider.css */
-/* ElementSlider.css */
 
 .element-slider {
   display: flex;
@@ -9,7 +7,7 @@
 .slider-button {
   background-color: #333;
   color: #fff;
-  padding: 2px 4px;
+  padding: 0.5px 1px;
   border: none;
   cursor: pointer;
 }
@@ -22,14 +20,15 @@
 
 .slider-element {
   flex: 0 0 10px;
-  height: 12px;
-  border: 1px solid #ccc;
+  height: 17px;
+  border: 1px solid #000000;
   margin: 0 2px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 14px;
   padding: 2px;
+  cursor: pointer;
 }
 
 tr:hover {
@@ -48,7 +47,6 @@ thead th {
   background: #ffffff;
 
 }
-/* ... Your existing CSS */
 
 .element-table {
   width: 100%;
@@ -87,12 +85,6 @@ thead th {
   color: red;
 }
 
-/* ElementSlider.css */
-/* .element-slider {
-   height: 25px; 
-    overflow: hidden;
-  }
-   */
 .table-container {
   height: 25px;
   overflow: hidden;
@@ -106,14 +98,13 @@ thead th {
 }
 
 .table-container {
-  height: 200px;
+  height: 250px;
   overflow-y: scroll;
 }
 
 .scrollable-tbody {
   display: block;
   max-height: 700px;
-  /* Set the max height to match the container */
   overflow-y: auto;
 }
 
@@ -124,7 +115,7 @@ thead th {
 }
 
 .askbid-container{
-  height: 700px;
+  height: 280px;
   overflow-y: scroll;
 }
 

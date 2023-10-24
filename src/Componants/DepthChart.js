@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import Highcharts from 'highcharts';
 
-function DepthChart({ symbol }) {
-
-
+function DepthChart({ selectedSymbol }) {
     useEffect(() => {
         const chartOptions = {
             chart: {
@@ -12,7 +10,7 @@ function DepthChart({ symbol }) {
                 renderTo: 'container',
             },
             title: {
-                text: `BTC-USDT Market Depth`
+                text: `${selectedSymbol} Market Depth`
             },
             xAxis: {
                 minPadding: 0,
